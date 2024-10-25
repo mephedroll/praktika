@@ -18,31 +18,41 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Praktika
 {
+
     public partial class DBChoice : Form
     {
+        string connectionString = "";
+
+        private SqlConnection sqlConnection = null;
+
+
+        private SqlDataAdapter sqlDataAdapter = null;  
+
+       //Autorization autorization;
         public DBChoice()
         {
             InitializeComponent();
+            //autorization = new Autorization(this);
         }
 
         private void pccompany_Button_Click(object sender, EventArgs e)
         {
-
+            connectionString = "Data Source=DESKTOP-DUT2LRI\\SQLEXPRESS;Initial Catalog=PCCompany;Integrated Security=True;Encrypt=False";
         }
 
         private void secondaryMaterial_Button_Click(object sender, EventArgs e)
         {
-
+            connectionString = "Data Source=DESKTOP-DUT2LRI\\SQLEXPRESS;Initial Catalog=SecondaryRowMaterialsCompany;Integrated Security=True;Encrypt=False";
         }
 
         private void Ships_Button_Click(object sender, EventArgs e)
         {
-
+            connectionString = "Data Source=DESKTOP-DUT2LRI\\SQLEXPRESS;Initial Catalog=Ships;Integrated Security=True;Encrypt=False";
         }
 
         private void airport_Button_Click(object sender, EventArgs e)
         {
-
+            connectionString = "Data Source=DESKTOP-DUT2LRI\\SQLEXPRESS;Initial Catalog=Airport;Integrated Security=True;Encrypt=False";
         }
     }
 }
