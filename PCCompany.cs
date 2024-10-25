@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Praktika
 {
     public partial class PCCompany : Form
     {
-        string connectionString = "Data Source=DESKTOP-DUT2LRI\\\\SQLEXPRESS;Initial Catalog=PCCompany;Integrated Security=True;Encrypt=False\"";
+        string connectionString = "Data Source=DESKTOP-DUT2LRI\\SQLEXPRESS;Initial Catalog=PCCompany;Integrated Security=True;Encrypt=False";
         int Key = 1;
         Dictionary<int, string> CurrentTable = new Dictionary<int, string>()
         {
@@ -66,60 +67,235 @@ namespace Praktika
 
         private void add_Button_Click(object sender, EventArgs e)
         {
-            Form Clarification;
-            Clarification = new PCCompanyClarification();
-            LoadData();
-        }
+            switch (Key)
+            {
+                case 1:
+                    if (dataGridView1.SelectedRows.Count > 0)
+                    {
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
+                            foreach (DataGridViewRow row in dataGridView1.Rows)
+                            {
+                                if (row.IsNewRow)
+                                    continue;
+
+                                string query = $"INSERT INTO {CurrentTable[Key]} (producer, model, type) VALUES (@Producer, @Model, @Type)";
+                                using (SqlCommand command = new SqlCommand(query, connection))
+                                {
+                                    command.Parameters.AddWithValue("@Producer", row.Cells["producer"].Value);
+                                    command.Parameters.AddWithValue("@Model", row.Cells["model"].Value);
+                                    command.Parameters.AddWithValue("@Type", row.Cells["type"].Value);
+                                    command.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                        LoadData();
+                    }
+                    break;
+                case 2:
+                    if (dataGridView1.SelectedRows.Count > 0)
+                    {
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
+                            foreach (DataGridViewRow row in dataGridView1.Rows)
+                            {
+                                if (row.IsNewRow)
+                                    continue;
+
+                                string query = $"INSERT INTO {CurrentTable[Key]} (id, model, speed, ram, hd, cd, price) VALUES (@Id, @Model, @Speed, @Ram, @Hd, @Cd, @Price)";
+                                using (SqlCommand command = new SqlCommand(query, connection))
+                                {
+                                    command.Parameters.AddWithValue("@Id", row.Cells["id"].Value);
+                                    command.Parameters.AddWithValue("@Model", row.Cells["model"].Value);
+                                    command.Parameters.AddWithValue("@Speed", row.Cells["speed"].Value);
+                                    command.Parameters.AddWithValue("@Ram", row.Cells["ram"].Value);
+                                    command.Parameters.AddWithValue("@Hd", row.Cells["hd"].Value);
+                                    command.Parameters.AddWithValue("@Cd", row.Cells["cd"].Value);
+                                    command.Parameters.AddWithValue("@Price", row.Cells["price"].Value);
+                                    command.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                        LoadData();
+                    }
+                break;
+                case 3:
+                    if (dataGridView1.SelectedRows.Count > 0)
+                    {
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
+                            foreach (DataGridViewRow row in dataGridView1.Rows)
+                            {
+                                if (row.IsNewRow)
+                                    continue;
+
+                                string query = $"INSERT INTO {CurrentTable[Key]} (id, model, speed, ram, hd, cd, price, screenSize) VALUES (@Id, @Model, @Speed, @Ram, @Hd, @Cd, @Price, @ScreenSize)";
+                                using (SqlCommand command = new SqlCommand(query, connection))
+                                {
+                                    command.Parameters.AddWithValue("@Id", row.Cells["id"].Value);
+                                    command.Parameters.AddWithValue("@Model", row.Cells["model"].Value);
+                                    command.Parameters.AddWithValue("@Speed", row.Cells["speed"].Value);
+                                    command.Parameters.AddWithValue("@Ram", row.Cells["ram"].Value);
+                                    command.Parameters.AddWithValue("@Hd", row.Cells["hd"].Value);
+                                    command.Parameters.AddWithValue("@Cd", row.Cells["cd"].Value);
+                                    command.Parameters.AddWithValue("@Price", row.Cells["price"].Value);
+                                    command.Parameters.AddWithValue("@ScreenSize", row.Cells["screenSize"].Value);
+                                    command.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                        LoadData();
+                    }
+                break;
+                case 4:
+                    if (dataGridView1.SelectedRows.Count > 0)
+                    {
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
+                            foreach (DataGridViewRow row in dataGridView1.Rows)
+                            {
+                                if (row.IsNewRow)
+                                    continue;
+
+                                string query = $"INSERT INTO {CurrentTable[Key]} (id, model, color, type, price) VALUES (@Id, @Model, @Color, @Type, @Price)";
+                                using (SqlCommand command = new SqlCommand(query, connection))
+                                {
+                                    command.Parameters.AddWithValue("@Id", row.Cells["id"].Value);
+                                    command.Parameters.AddWithValue("@Model", row.Cells["model"].Value);
+                                    command.Parameters.AddWithValue("@Color", row.Cells["color"].Value);
+                                    command.Parameters.AddWithValue("@Type", row.Cells["type"].Value);
+                                    command.Parameters.AddWithValue("@Price", row.Cells["price"].Value);
+                                    command.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                        LoadData();
+                    }
+                    break;
+            }
+
+    }
         private void update_Button_Click(object sender, EventArgs e)
         {
-            //Form Clarification;
-            //Clarification = new PCCompanyClarification();
-            //LoadData();
-            //string connectionString = "Data Source=DESKTOP-DUT2LRI\\\\SQLEXPRESS;Initial Catalog=PCCompany;Integrated Security=True;Encrypt=False\"";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    if (row.Cells["Id"].Value != null)
-                    {
-                        string query = $"UPDATE {CurrentTable[Key]} SET producer = @Producer, model = @Model, type = @Type WHERE Id = @Id";
-                        using (SqlCommand command = new SqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@Producer", row.Cells["producer"].Value);
-                            command.Parameters.AddWithValue("@Model", row.Cells["model"].Value);
-                            command.Parameters.AddWithValue("@Type", row.Cells["type"].Value);
-                            command.ExecuteNonQuery();
-                        }
-                    }
-                }
-            }
-            LoadData();
-        }
-        private void delete_Button_Click(object sender, EventArgs e)
-        {
-            //Form Clarification;
-            //Clarification = new PCCompanyClarification();
-            //LoadData();
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
-                        if (row.Cells["model"].Value != null)
+                        if (row.Cells["model"].Value != null && row.Cells["model"].Value != row.Cells["model"].Value)
                         {
-                            string query = "DELETE FROM Products WHERE model = @Model";
+                            string query = $"UPDATE {CurrentTable[Key]} SET producer = @Producer, model = @Model, type = @Type";
                             using (SqlCommand command = new SqlCommand(query, connection))
                             {
+                                command.Parameters.AddWithValue("@Producer", row.Cells["producer"].Value);
                                 command.Parameters.AddWithValue("@Model", row.Cells["model"].Value);
+                                command.Parameters.AddWithValue("@Type", row.Cells["type"].Value);
                                 command.ExecuteNonQuery();
                             }
                         }
                     }
                 }
                 LoadData();
+            }
+        }
+        private void delete_Button_Click(object sender, EventArgs e)
+        {
+            switch (Key)
+            {
+                case 1:
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                        {
+                            if (row.Cells["model"].Value != null)
+                            {
+                                string query = $"DELETE FROM {CurrentTable[Key]} WHERE model = @Model";
+                                using (SqlCommand command = new SqlCommand(query, connection))
+                                {
+                                    command.Parameters.AddWithValue("@Model", row.Cells["model"].Value);
+                                    command.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                    }
+                    LoadData();
+                }
+                break;
+                case 2:
+                    if (dataGridView1.SelectedRows.Count > 0)
+                    {
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
+                            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                            {
+                                if (row.Cells["id"].Value != null)
+                                {
+                                    string query = $"DELETE FROM {CurrentTable[Key]} WHERE id = @Id";
+                                    using (SqlCommand command = new SqlCommand(query, connection))
+                                    {
+                                        command.Parameters.AddWithValue("@Id", row.Cells["id"].Value);
+                                        command.ExecuteNonQuery();
+                                    }
+                                }
+                            }
+                        }
+                        LoadData();
+                    }
+                 break;
+                case 3:
+                    if (dataGridView1.SelectedRows.Count > 0)
+                    {
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
+                            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                            {
+                                if (row.Cells["id"].Value != null)
+                                {
+                                    string query = $"DELETE FROM {CurrentTable[Key]} WHERE id = @Id";
+                                    using (SqlCommand command = new SqlCommand(query, connection))
+                                    {
+                                        command.Parameters.AddWithValue("@Id", row.Cells["id"].Value);
+                                        command.ExecuteNonQuery();
+                                    }
+                                }
+                            }
+                        }
+                        LoadData();
+                    }
+                break;
+                case 4:
+                    if (dataGridView1.SelectedRows.Count > 0)
+                    {
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
+                            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                            {
+                                if (row.Cells["id"].Value != null)
+                                {
+                                    string query = $"DELETE FROM {CurrentTable[Key]} WHERE id = @Id";
+                                    using (SqlCommand command = new SqlCommand(query, connection))
+                                    {
+                                        command.Parameters.AddWithValue("@Id", row.Cells["id"].Value);
+                                        command.ExecuteNonQuery();
+                                    }
+                                }
+                            }
+                        }
+                        LoadData();
+                    }
+                 break;
             }
         }
 

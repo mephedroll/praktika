@@ -13,13 +13,13 @@ namespace Praktika
 {
     public partial class Autorization : Form
     {
-        public Autorization(Main form)
+        public Autorization()
         {
-            Form = form;
+            //Form = form;
             InitializeComponent();
         }
 
-        public Main Form;
+        //public Main Form;
 
         string login;
         string password;

@@ -14,29 +14,36 @@ namespace Praktika
         public Main()
         {
             InitializeComponent();
-            autorization = new Autorization(this);
-
-
+            
         }
 
         private void PCCompany_button_Click(object sender, EventArgs e)
         {
             pccompany = new PCCompany();
+            Hide();
+            pccompany.ShowDialog();
+            
         }
 
         private void Airport_button_Click(object sender, EventArgs e)
         {
             airport = new Airport();
+            Hide();
+            airport.ShowDialog();
         }
 
         private void SecondaryRow_button_Click(object sender, EventArgs e)
         {
             secondaryRowMaterials = new SecondaryRowMaterials();
+            Hide();
+            secondaryRowMaterials.ShowDialog();
         }
 
         private void Ships_button_Click(object sender, EventArgs e)
         {
             ships = new Ships();
+            Hide();
+            ships.ShowDialog();
         }
     }
 }
