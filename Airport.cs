@@ -82,9 +82,9 @@ namespace Praktika
 
         private void add_button_Click(object sender, EventArgs e)
         {
-            //switch (Key)
-            //{
-                //case 1:
+            switch (Key)
+            {
+                case 1:
                     if (dataGridView1.SelectedRows.Count > 0)
                     {
                         using (SqlConnection connection = new SqlConnection(connectionString))
@@ -106,17 +106,53 @@ namespace Praktika
                         }
                         LoadData();
                     }
-                //break;
-            //}
+                break;
+            }
         }
         private void update_button_Click(object sender, EventArgs e)
         {
-
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (row.Cells["id"].Value != null && row.Cells["id"].Value != row.Cells["id"].Value)
+                        {
+                            string query = $"UPDATE {CurrentTable[Key]} SET id = @Id, name = @Name";
+                            using (SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@Id", row.Cells["id"].Value);
+                                command.Parameters.AddWithValue("@Name", row.Cells["name"].Value);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+                LoadData();
+            }
         }
 
         private void delete_button_Click(object sender, EventArgs e)
         {
-
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    if (row.Cells["id"].Value != null)
+                    {
+                        string query = $"DELETE FROM {CurrentTable[Key]} WHERE id = @Id";
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@Id", row.Cells["id"].Value);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            LoadData();
         }
     }
 }

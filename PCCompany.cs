@@ -34,6 +34,7 @@ namespace Praktika
         private void PCCompany_Load(object sender, EventArgs e)
         {
             LoadData();
+
         }
 
         private void LoadData()

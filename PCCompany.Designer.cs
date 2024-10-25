@@ -54,9 +54,9 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 45);
+            dataGridView1.Location = new Point(12, 28);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(647, 304);
+            dataGridView1.Size = new Size(776, 321);
             dataGridView1.TabIndex = 1;
             // 
             // sqlConnectionBindingSource
@@ -65,31 +65,31 @@
             // 
             // add_Button
             // 
-            add_Button.Location = new Point(697, 387);
+            add_Button.Location = new Point(697, 402);
             add_Button.Name = "add_Button";
-            add_Button.Size = new Size(75, 23);
+            add_Button.Size = new Size(91, 36);
             add_Button.TabIndex = 2;
-            add_Button.Text = "button1";
+            add_Button.Text = "INSERT";
             add_Button.UseVisualStyleBackColor = true;
             add_Button.Click += add_Button_Click;
             // 
             // update_Button
             // 
-            update_Button.Location = new Point(573, 387);
+            update_Button.Location = new Point(566, 402);
             update_Button.Name = "update_Button";
-            update_Button.Size = new Size(75, 23);
+            update_Button.Size = new Size(90, 36);
             update_Button.TabIndex = 3;
-            update_Button.Text = "button2";
+            update_Button.Text = "UPDATE";
             update_Button.UseVisualStyleBackColor = true;
             update_Button.Click += update_Button_Click;
             // 
             // delete_Button
             // 
-            delete_Button.Location = new Point(454, 387);
+            delete_Button.Location = new Point(434, 402);
             delete_Button.Name = "delete_Button";
-            delete_Button.Size = new Size(75, 23);
+            delete_Button.Size = new Size(88, 36);
             delete_Button.TabIndex = 4;
-            delete_Button.Text = "button3";
+            delete_Button.Text = "DELETE";
             delete_Button.UseVisualStyleBackColor = true;
             delete_Button.Click += delete_Button_Click;
             // 
@@ -104,42 +104,42 @@
             // 
             // toolStripButton1
             // 
-            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolStripButton1.ImageTransparentColor = Color.Magenta;
             toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(23, 22);
+            toolStripButton1.Size = new Size(53, 22);
             toolStripButton1.Text = "Product";
             toolStripButton1.TextImageRelation = TextImageRelation.TextAboveImage;
             toolStripButton1.Click += toolStripButton1_Click;
             // 
             // toolStripButton2
             // 
-            toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
             toolStripButton2.ImageTransparentColor = Color.Magenta;
             toolStripButton2.Name = "toolStripButton2";
-            toolStripButton2.Size = new Size(23, 22);
-            toolStripButton2.Text = "toolStripButton2";
+            toolStripButton2.Size = new Size(26, 22);
+            toolStripButton2.Text = "PC";
             toolStripButton2.Click += toolStripButton2_Click;
             // 
             // toolStripButton3
             // 
-            toolStripButton3.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton3.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolStripButton3.Image = (Image)resources.GetObject("toolStripButton3.Image");
             toolStripButton3.ImageTransparentColor = Color.Magenta;
             toolStripButton3.Name = "toolStripButton3";
-            toolStripButton3.Size = new Size(23, 22);
-            toolStripButton3.Text = "toolStripButton3";
+            toolStripButton3.Size = new Size(48, 22);
+            toolStripButton3.Text = "Laptop";
             toolStripButton3.Click += toolStripButton3_Click;
             // 
             // toolStripButton4
             // 
-            toolStripButton4.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton4.DisplayStyle = ToolStripItemDisplayStyle.Text;
             toolStripButton4.Image = (Image)resources.GetObject("toolStripButton4.Image");
             toolStripButton4.ImageTransparentColor = Color.Magenta;
             toolStripButton4.Name = "toolStripButton4";
-            toolStripButton4.Size = new Size(23, 22);
-            toolStripButton4.Text = "toolStripButton4";
+            toolStripButton4.Size = new Size(46, 22);
+            toolStripButton4.Text = "Printer";
             toolStripButton4.Click += toolStripButton4_Click;
             // 
             // PCCompany

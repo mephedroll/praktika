@@ -14,7 +14,7 @@ namespace Praktika
         public Main()
         {
             InitializeComponent();
-            
+
         }
 
         private void PCCompany_button_Click(object sender, EventArgs e)
@@ -22,7 +22,7 @@ namespace Praktika
             pccompany = new PCCompany();
             Hide();
             pccompany.ShowDialog();
-            
+            Show();
         }
 
         private void Airport_button_Click(object sender, EventArgs e)
@@ -30,6 +30,7 @@ namespace Praktika
             airport = new Airport();
             Hide();
             airport.ShowDialog();
+            Show();
         }
 
         private void SecondaryRow_button_Click(object sender, EventArgs e)
@@ -37,6 +38,7 @@ namespace Praktika
             secondaryRowMaterials = new SecondaryRowMaterials();
             Hide();
             secondaryRowMaterials.ShowDialog();
+            Show();
         }
 
         private void Ships_button_Click(object sender, EventArgs e)
@@ -44,6 +46,12 @@ namespace Praktika
             ships = new Ships();
             Hide();
             ships.ShowDialog();
+            Show();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
